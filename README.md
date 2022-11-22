@@ -23,9 +23,9 @@ AsyncElegantOTA предоставляет красивый интерфейс �
 
 ###### Ручная установка
 
-Для Windows: Скачать [Репо](https://github.com/S-LABc/AsyncElegantOTA-ru/archive/main.zip) и извлечь .zip в Документы>Arduino>Libraries>{создать папку "AsyncElegantOTA"}
+Для Windows: Скачать [Репо](https://github.com/S-LABc/AsyncElegantOTA-ru/archive/main.zip) и извлечь .zip в Документы>Arduino>Libraries>{создать папку "AsyncElegantOTA-ru"}
 
-Для Linux: Скачать [Репо](https://github.com/S-LABc/AsyncElegantOTA-ru/archive/main.zip) и извлечь .zip в Sketchbook>Libraries>{создать каталог "AsyncElegantOTA"}
+Для Linux: Скачать [Репо](https://github.com/S-LABc/AsyncElegantOTA-ru/archive/main.zip) и извлечь .zip в Sketchbook>Libraries>{создать каталог "AsyncElegantOTA-ru"}
 
 ###### Ручная установка через IDE
 
@@ -38,7 +38,7 @@ AsyncElegantOTA предоставляет красивый интерфейс �
 
  Подключите библиотеку AsyncElegantOTA `#include <AsyncElegantOTA.h>` в начале скетча Arduino.
  
- Ниже вставьте это - `AsyncElegantOTA.begin(&server);` в методе setup() это - `server.begin();`
+В методе setup() вставьте это - `AsyncElegantOTA.begin(&server);` перед этим - `server.begin();`
  
  Вот и все!
  
@@ -117,7 +117,7 @@ void setup(void) {
   Serial.println(WiFi.localIP());
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(200, "text/plain", "Привет! Я ESP8266.");
+    request->send(200, "text/plain", "Hi! I am ESP8266.");
   });
 
   AsyncElegantOTA.begin(&server); // Запуск AsyncElegantOTA
@@ -162,7 +162,7 @@ void setup(void) {
   Serial.println(WiFi.localIP());
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(200, "text/plain", "Привет! Я ESP32.");
+    request->send(200, "text/plain", "Hi! I am ESP32.");
   });
 
   AsyncElegantOTA.begin(&server); // Запуск AsyncElegantOTA
