@@ -44,7 +44,7 @@ void setup(void) {
   Serial.println(WiFi.localIP());
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(200, "text/plain", "Привет! Это образец ответа AsyncWebServer. Добавь /update в конец адресной строки браузера");
+    request->send(200, "text/plain", "<!DOCTYPE html> <html> <meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\"> <body> <div>Привет! Это образец ответа AsyncWebServer. Добавь /update в конец адресной строки браузера </div> </body> </html>");
   });
 
   AsyncElegantOTA.begin(&server); // Запуск AsyncElegantOTA
