@@ -5,7 +5,6 @@
   Перевод: Скляр Роман ( https://github.com/S-LABc )
   
   Важное примечание: отметьте репозиторий на Github, если вам нравится библиотека! :)
-  Ссылки на репо:
   оригинал - https://github.com/ayushsharma82/AsyncElegantOTA
   русский - https://github.com/S-LABc/AsyncElegantOTA-ru
 */
@@ -19,7 +18,7 @@
 #endif
 
 #include <ESPAsyncWebServer.h> // https://github.com/me-no-dev/ESPAsyncWebServer
-#include <AsyncElegantOTA.h>
+#include <AsyncElegantOTA_RU.h>
 
 const char* ssid = "........"; // Имя сети WiFi
 const char* password = "........"; // Пароль сети WiFi
@@ -30,24 +29,26 @@ void setup(void) {
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
-  Serial.println("");
+  Serial.println();
 
   // Ожидание подключения
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-  Serial.println("");
-  Serial.print("Подключен к ");
+  Serial.println();
+  Serial.print("Подключен к: ");
   Serial.println(ssid);
   Serial.print("IP адрес: ");
   Serial.println(WiFi.localIP());
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(200, "text/plain", "<!DOCTYPE html> <html> <meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\"> <body> <div>Привет! Это образец ответа AsyncWebServer. Добавь /update в конец адресной строки браузера </div> </body> </html>");
+    request->send(200, "text/html", "<!DOCTYPE html><html><meta http-equiv=\"Content-type\"content=\"text/html;charset=utf-8\"><body><div>Привет! Это образец ответа AsyncWebServer. Добавь /update в конец адресной строки браузера. Или перейдите по <a href=\"/update\">ссылке</a></div></body></html>");
   });
 
-  AsyncElegantOTA.begin(&server); // Запуск AsyncElegantOTA
+  AsyncElegantOTAru.begin(&server);
+  Serial.println("AsyncElegantOTAru запущен");
+
   server.begin();
   Serial.println("HTTP сервер запущен");
 }
