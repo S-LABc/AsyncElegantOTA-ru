@@ -1,4 +1,4 @@
-AsyncElegantOTA	KEYWORD1
+AsyncElegantOTA_RU	KEYWORD1
 begin	KEYWORD2
 setID	KEYWORD2
 restart	KEYWORD2
