@@ -8,3 +8,4 @@ Object.defineProperty(Vue.prototype, 'SparkMD5', { value: SparkMD5 });
 new Vue({
   render: (h) => h(App),
 }).$mount('#app');
+
