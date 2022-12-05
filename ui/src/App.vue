@@ -215,7 +215,7 @@ export default {
           request.send(formData);
         })
         .catch(() => {
-          this.OTAError = 'Неизвестная ошибка при загрузке, подробности в консоли...';
+          this.OTAError = 'Неизвестная ошибка при загрузке, подробности в консоле...';
           this.uploading = false;
           this.progress = 0;
         });
