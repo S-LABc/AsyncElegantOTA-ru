@@ -92,7 +92,7 @@ upload_url = <Ваш URL-адрес для загрузки, например ht
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
-#include <AsyncElegantOTA.h>
+#include <AsyncElegantOTA_RU.h>
 
 const char* ssid = "........";
 const char* password = "........";
@@ -103,15 +103,15 @@ void setup(void) {
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
-  Serial.println("");
+  Serial.println();
 
   // Ожидание подключения
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-  Serial.println("");
-  Serial.print("Подключен к ");
+  Serial.println();
+  Serial.print("Подключен к: ");
   Serial.println(ssid);
   Serial.print("IP адрес: ");
   Serial.println(WiFi.localIP());
@@ -120,7 +120,9 @@ void setup(void) {
     request->send(200, "text/plain", "Hi! I am ESP8266.");
   });
 
-  AsyncElegantOTA.begin(&server); // Запуск AsyncElegantOTA
+  AsyncElegantOTAru.begin(&server);
+  Serial.println("AsyncElegantOTAru запущен");
+  
   server.begin();
   Serial.println("HTTP сервер запущен");
 }
@@ -137,7 +139,7 @@ void loop(void) {
 #include <WiFi.h>
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
-#include <AsyncElegantOTA.h>
+#include <AsyncElegantOTA_RU.h>
 
 const char* ssid = "........";
 const char* password = "........";
@@ -148,15 +150,15 @@ void setup(void) {
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
-  Serial.println("");
+  Serial.println();
 
   // Ожидание подключения
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-  Serial.println("");
-  Serial.print("Подключен к ");
+  Serial.println();
+  Serial.print("Подключен к: ");
   Serial.println(ssid);
   Serial.print("IP адрес: ");
   Serial.println(WiFi.localIP());
@@ -165,7 +167,9 @@ void setup(void) {
     request->send(200, "text/plain", "Hi! I am ESP32.");
   });
 
-  AsyncElegantOTA.begin(&server); // Запуск AsyncElegantOTA
+  AsyncElegantOTAru.begin(&server);
+  Serial.println("AsyncElegantOTAru запущен");
+
   server.begin();
   Serial.println("HTTP сервер запущен");
 }
